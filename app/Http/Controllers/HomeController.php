@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Talk;
 
 class HomeController extends Controller
 {
@@ -27,6 +28,9 @@ class HomeController extends Controller
     }
     
     public function talk() {
-        return view('talk.talk');
+        $talks = Talk::get();
+        return view('talk.talk', ['talks' => $talks]);
     }
+    
+
 }

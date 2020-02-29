@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use
+use App\Talk;
+use Illuminate\Support\Facades\Auth;
+
 
 class TalkController extends Controller
 {
@@ -11,5 +13,11 @@ class TalkController extends Controller
     {
         $user=Auth::user();
         
+        $content=$request->input('content');
+        Talk::create([
+            'user_name'=>$user->name,
+            'content'=>$content
+        ]);
+        return redirect()->route('talk');
     }
 }
