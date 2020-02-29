@@ -18,4 +18,5 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/talk', 'HomeController@talk');
+Route::get('/talk', 'HomeController@talk')->name('talk');
+Route::post('/talk', 'TalkController@talking');

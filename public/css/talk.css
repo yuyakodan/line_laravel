@@ -1,0 +1,15 @@
+.talk{
+    
+}
+
+.talk-screen{
+    margin: 0 auto;
+    height: 500px;
+    width: 1000px;
+    border: solid 1px;
+    margin-bottom: 10px;
+}
+
+.talk-textarea{
+    width: 90%;
+}
