@@ -11,21 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
+
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/talk', 'HomeController@talk')->name('talk');
 Route::post('/talk', 'TalkController@talking')->name('talking');
 
+
 Route::group(['middleware' => 'check'], function() {
-    //「ログインしていない場合はログイン画面に遷移させるページ」はここにもRouteを書く
-    Route::get('/', function () {
-        return view('welcome');
-    });
-    Route::get('/home', 'HomeController@index')->name('home');
+    //「ログインしていない場合はログイン画面に遷移させるページ」はここにRouteを書く
+    Route::resource('/', 'MypageController');
     Route::get('/talk', 'HomeController@talk')->name('talk');
 });
+
