@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="{{ app()->getLocale() }}">
-    @extends('component/head')
+    @include('component/head')
     <body>
 
     <style>
