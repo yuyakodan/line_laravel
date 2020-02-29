@@ -15,6 +15,6 @@ Auth::routes();
 
 Route::group(['middleware' => 'check'], function() {
     //「ログインしていない場合はログイン画面に遷移させるページ」はここにRouteを書く
-    Route::get('/', function () {return view('welcome');});
+    Route::resource('/', 'MypageController');
     Route::get('/talk', 'HomeController@talk')->name('talk');
 }); 
