@@ -82,4 +82,6 @@
             </div>
         </div>
     </body>
+        <a href="{{ route('talk')}}">トーク画面</a>
+
 </html>
