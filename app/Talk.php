@@ -11,7 +11,7 @@ class Talk extends Model
     ];
     
     protected $guarded = [
-        'created_at','updated_at'
+        'user_id','created_at','updated_at'
     ];
     
 }
