@@ -18,4 +18,13 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/talk', 'HomeController@talk');
+Route::get('/talk', 'HomeController@talk')->name('talk');
+
+Route::group(['middleware' => 'check'], function() {
+    //「ログインしていない場合はログイン画面に遷移させるページ」はここにもRouteを書く
+    Route::get('/', function () {
+        return view('welcome');
+    });
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/talk', 'HomeController@talk')->name('talk');
+});
