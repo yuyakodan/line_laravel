@@ -9,8 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
-@extends('layouts.app')
-@section('content')
+
 <div class="talk">
     <div class="talk-screen">
         @foreach ($talks as $item)
@@ -26,6 +25,5 @@
     </div>
 </div>
 <a href ="/">ユーザーページ</a>
-@endsection
 </body>
 </html>
