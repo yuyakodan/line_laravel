@@ -31,6 +31,5 @@ class HomeController extends Controller
         $talks = Talk::get();
         return view('talk.talk', ['talks' => $talks]);
     }
-    
 
 }

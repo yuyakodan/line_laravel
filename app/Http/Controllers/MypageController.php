@@ -39,14 +39,11 @@ class MypageController extends Controller
     public function store(Request $request)
     {
         //
-
         $auths=User::Where('id',Auth::id())->first();
         $auths->name=$request->input('name');
         $auths->email=$request->input('email');
-        var_dump($auths);
         $auths->save();
-        return response()->json( ['result' => 'hoge'] );
-
+        return response()->json( ['message' => '更新が完了しました。'] );
 
     }
 
