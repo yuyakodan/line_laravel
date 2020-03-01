@@ -1,5 +1,9 @@
-<html>
+<!DOCTYPE html>
+<html lang="ja">
     <head>
+         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>トーク画面</title>
         <link href="{{ asset('css/talk.css') }}" rel="stylesheet">
         <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
@@ -12,7 +16,11 @@
         <div class="talk-title">
             <p>トーク画面</p>
         </div>
-        <div class="talk-screen"></div>
+            <div class="talk-screen">
+                @foreach ($talks as $item)
+                @include('component.talk', ['item' => $item])
+                @endforeach
+            </div>
         </div>
             
         <div class="talk-input">
@@ -26,17 +34,6 @@
     </div>
     <a href ="/">ユーザーページ</a>
     
-    <div id="app">
-        @{{ msg }}
-    </div>
-  
 </html>
 
-<script>
-    new Vue({
-        el: '#app',
-        data: {
-            msg: 'hello!'
-        }
-    })
-</script>
+

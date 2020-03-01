@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Talk;
 
+use Illuminate\Support\Facades\Auth;
+
+
 class HomeController extends Controller
 {
     /**
@@ -28,9 +31,16 @@ class HomeController extends Controller
     }
     
     public function talk() {
+
+        $users = Auth::user();
+        $user_id = $users->id;
+        $user_name = $users->name;
+        $username=\App\Talk::whereUser_id($user_id)->update(['user_name' => $users->name]);
         $talks = Talk::get();
         return view('talk.talk', ['talks' => $talks]);
     }
     
-
+    public function userpage(){
+        return view('/');
+    }
 }

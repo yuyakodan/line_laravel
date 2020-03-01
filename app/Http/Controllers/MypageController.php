@@ -39,6 +39,14 @@ class MypageController extends Controller
     public function store(Request $request)
     {
         //
+
+        $auths=User::Where('id',Auth::id())->first();
+        $auths->name=$request->input('name');
+        $auths->email=$request->input('email');
+        $auths->save();
+        return view('Mypage', [ 'auths' => $auths ]);
+
+
     }
 
     /**

@@ -8,10 +8,25 @@
 </head>
 <body>
     プロフィール <br>
-    名前:{{ $auths->name }} <br>
-    メールアドレス:{{ $auths->email }} <br>
+    <form action=" /" method="POST">
+    @csrf
+        名前: <input type="text" name="name" value="{{ $auths->name }}"><br>
+        メールアドレス: <input type="email" name="email" value="{{ $auths->email}}"> <br>
+        <input type="submit" value="変更">
+    </form>
 
     
     <a href="/talk">ホームに戻る</a>
+    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="{{ route('logout') }}"
+            onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
+            {{ __('Logout') }}
+        </a>
+
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            @csrf
+        </form>
+    </div>
 </body>
 </html>
