@@ -1,12 +1,8 @@
 <!DOCTYPE html>
 <html lang="ja">
+@include('component/head')
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>トーク画面</title>
     <link href="{{ asset('css/talk.css') }}" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
 
@@ -17,13 +13,30 @@
         @endforeach
     </div>
     <div class="talk-input">
-    <form method="post" action="/talk">
         @csrf
-        <textarea class="talk-textarea" placeholder="入力してください" name="content" ></textarea>
-        <button type="submit" class="submit" >送信する</button>
-        </form>
+        <div id="app">
+            <textarea class="talk-textarea" placeholder="入力してください" v-model="formData.content"></textarea>
+            <button type="submit" class="submit" v-on:click="submit()">送信する</button>
+        </div>
     </div>
 </div>
 <a href ="/">ユーザーページ</a>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            formData :{
+                content: '',
+            }
+        },
+        methods:{
+            submit:function(){
+                axios.post('/contentPost', this.formData).then(function(req){
+                    console.log('更新完了')
+                })
+            }
+        }
+    })
+</script>
 </body>
 </html>

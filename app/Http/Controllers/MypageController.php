@@ -43,8 +43,9 @@ class MypageController extends Controller
         $auths=User::Where('id',Auth::id())->first();
         $auths->name=$request->input('name');
         $auths->email=$request->input('email');
+        var_dump($auths);
         $auths->save();
-        return view('Mypage', [ 'auths' => $auths ]);
+        return response()->json( ['result' => 'hoge'] );
 
 
     }
