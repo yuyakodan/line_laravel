@@ -8,6 +8,7 @@
     名前: <input type="text" v-model="formData.name"><br>
     メールアドレス: <input type="email" v-model="formData.email"> <br>
     <input type="submit" v-on:click="submit()" value="変更">
+    @{{message}}
     </div>
     
     <a href="/talk">ホームに戻る</a>
@@ -28,12 +29,14 @@
                 formData :{
                     name: '{{ $auths->name }}',
                     email:'{{ $auths->email }}',
-                }
+                },
+                message: '',
             },
             methods:{
                 submit:function(){
-                    axios.post('/dataPost', this.formData).then(function(req){
-                        console.log('更新完了', req.data.result, JSON.stringfy(req.data))
+                    axios.post('/postDB', this.formData).then((response)=>{
+                        console.log('更新完了')
+                        this.message = response.data.message
                     })
                 }
             }

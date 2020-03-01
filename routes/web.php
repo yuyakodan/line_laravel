@@ -20,11 +20,19 @@ Auth::routes();
 // Route::post('/dataPost', 'MypageController@store')->name('talking');
 // Route::post('/contentPost', 'TalkController@talking')->name('talking');
 
+/* OK
+Route::post('/postDB', function () {
+    return response()->json(['hoge'=>'geho']);
+});
+*/
+
 Route::group(['middleware' => 'check'], function() {
     //「ログインしていない場合はログイン画面に遷移させるページ」はここにRouteを書く
     Route::resource('/', 'MypageController');
     Route::get('/talk', 'HomeController@talk')->name('talk');
     Route::post('/dataPost', 'MypageController@store')->name('talking');
     Route::post('/talk', 'TalkController@talking')->name('talking');
+    Route::post('/contentPost', 'TalkController@talking')->name('talking');
+    Route::post('/postDB', 'MypageController@store')->name('db');
 });
 

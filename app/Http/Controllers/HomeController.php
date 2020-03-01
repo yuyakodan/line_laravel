@@ -43,4 +43,5 @@ class HomeController extends Controller
     public function userpage(){
         return view('/');
     }
+
 }
