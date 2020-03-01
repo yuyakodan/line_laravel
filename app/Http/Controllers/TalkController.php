@@ -22,7 +22,7 @@ class TalkController extends Controller
             'content'=>$content
         ]);
         
-        $username=\App\Talk::whereUser_id($user_id)->update(['user_name' => $users->name]);
+        $username=\App\Talk::whereUser_id($user_id)->update(['user_name' => $users]);
         
        
         return redirect()->route('talk');
