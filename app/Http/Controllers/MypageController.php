@@ -36,15 +36,15 @@ class MypageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function dpUpdate(Request $request)
     {
         //
-        $auths=User::Where('id',Auth::id())->first();
-        $auths->name=$request->input('name');
-        $auths->email=$request->input('email');
+        $auths = User::Where('id',$request->input('id'))->first();
+        foreach ($request->input() as $key => $value){
+            $auths[$key] = $value;
+        }
         $auths->save();
-        return response()->json( ['message' => '更新が完了しました。'] );
-
+        return response()->json( ['message' => '更新が完了しました'] );
     }
 
     /**

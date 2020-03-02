@@ -5,10 +5,10 @@
     プロフィール <br>
     @csrf
     <div id="app">
-    名前: <input type="text" v-model="formData.name"><br>
-    メールアドレス: <input type="email" v-model="formData.email"> <br>
-    <input type="submit" v-on:click="submit()" value="変更">
-    @{{message}}
+        名前: <input type="text" v-model="formData.name"><br>
+        メールアドレス: <input type="email" v-model="formData.email"> <br>
+        <input type="submit" v-on:click="submit()" value="変更">
+        @{{message}}
     </div>
     
     <a href="/talk">ホームに戻る</a>
@@ -27,6 +27,7 @@
             el: '#app',
             data: {
                 formData :{
+                    id: '{{Auth::user()->id}}',
                     name: '{{ $auths->name }}',
                     email:'{{ $auths->email }}',
                 },

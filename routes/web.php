@@ -33,6 +33,6 @@ Route::group(['middleware' => 'check'], function() {
     Route::post('/dataPost', 'MypageController@store')->name('talking');
     Route::post('/talk', 'TalkController@talking')->name('talking');
     Route::post('/contentPost', 'TalkController@talking')->name('talking');
-    Route::post('/postDB', 'MypageController@store')->name('db');
+    Route::post('/postDB', 'MypageController@dpUpdate')->name('db');
 });
 
