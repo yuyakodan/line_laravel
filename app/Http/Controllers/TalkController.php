@@ -24,7 +24,6 @@ class TalkController extends Controller
         
         $username=\App\Talk::whereUser_id($user_id)->update(['user_name' => $users]);
         
-       
         return redirect()->route('talk');
     }
 }
